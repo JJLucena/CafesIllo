@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CoffeeData : MonoBehaviour
+public class CoffeeData
 {
-
-    private float[] generalQuantities = new float[3];
-    private float[] coffeQuantities = new float[3];
-    private float[] milkQuantities = new float[3];
-    private float[] syrupQuantities = new float[3];
+    public float[] generalQuantities = {0,0,0};
+    public float[] coffeQuantities = {0,0,0};
+    public float[] milkQuantities = {0,0,0};
+    public float[] syrupQuantities = {0,0,0};
 }
