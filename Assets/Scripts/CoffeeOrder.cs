@@ -12,9 +12,9 @@ public class CoffeeOrder : MonoBehaviour
     private float scaleBars = 0.5f;
 
     [SerializeField]    
-    private Sprite[] sprites; 
-    [SerializeField]    
-    private Sprite[] idSprites;
+    private Sprite[] sprites;  
+    [SerializeField]
+    private GameObject[] idSprites;
 
     public void SetData()
     {
@@ -25,7 +25,7 @@ public class CoffeeOrder : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            //idSprites[i] = ;
+            idSprites[i].GetComponent<SpriteRenderer>().sprite = sprites[data.id[i]];
         }
     }
 
@@ -37,6 +37,6 @@ public class CoffeeOrder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        SetData();
     }
 }

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
 
 public class ClientManager : MonoBehaviour
 {
+    [SerializeField]
+    private CoinsManager coinsManager;
     [SerializeField]
     private  OrderManager orderManager;
 
@@ -17,8 +20,8 @@ public class ClientManager : MonoBehaviour
 
     [SerializeField]
     private Transform[] clientsPositions;
-    private Queue<GameObject> clientsActivated;
-    private Queue<GameObject> clientsDeactivated;
+    private List<GameObject> clientsActivated;
+    private List<GameObject> clientsDeactivated;
     [SerializeField]
     private float timer;
     private float timerAux;
@@ -26,42 +29,56 @@ public class ClientManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        clientsActivated = new Queue<GameObject>();
-        clientsDeactivated = new Queue<GameObject>();
+        clientsActivated = new List<GameObject>();
+        clientsDeactivated = new List<GameObject>();
 
 
         for (int i = 0; i < numClients; i++)
         {            
             GameObject createdClient = Instantiate(client, gameObject.transform.position, Quaternion.identity);
             createdClient.GetComponent<Client>().clientManager = this;
+            createdClient.GetComponent<Client>().coinsManager = coinsManager;
             createdClient.SetActive(false);
-            clientsDeactivated.Enqueue(createdClient);
+            clientsDeactivated.Add(createdClient);
         }
         for (int i = 0; i < clientsPositions.Length; i++)
         {  
-            clientsDeactivated.Peek().transform.position = clientsPositions[i].position;
+            clientsDeactivated.First().transform.position = clientsPositions[i].position;
             SetNextActivate();
+        }
+    }
+
+    public void nextClient(GameObject pastClient)
+    {
+        if(clientsActivated.Contains(pastClient))
+        {
+            clientsDeactivated.First().transform.position = pastClient.transform.position;
+            SetNextActivate();
+            SetLastDeactivate(pastClient);
         }
     }
 
     public void SetNextActivate()
     {
-        clientsDeactivated.Peek().SetActive(true);
-        clientsDeactivated.Peek().GetComponent<Client>().SetOrder();
-        clientsActivated.Enqueue(clientsDeactivated.Dequeue());
+        clientsDeactivated.First().SetActive(true);
+        clientsDeactivated.First().GetComponent<Client>().SetOrder();
+        clientsActivated.Add(clientsDeactivated.First());
+        clientsDeactivated.Remove(clientsDeactivated.First());
     }
 
-    public void SetLastDeactivate()
+    public void SetLastDeactivate(GameObject pastClient)
     {
-        clientsActivated.Peek().SetActive(false);
-        orderManager.RemoveOrder(clientsActivated.Peek().GetComponent<Client>().order);
-        clientsDeactivated.Enqueue(clientsActivated.Dequeue());
+        //clientsActivated.Find(x => x == clientsActivated.First());
+        pastClient.SetActive(false);
+        orderManager.RemoveOrder(pastClient.GetComponent<Client>().order);
+        clientsDeactivated.Add(pastClient);
+        clientsActivated.Remove(pastClient);
     }
 
-    public bool OrderAdded(CoffeeOrderData newOrder)
+    public bool OrderAdded(CoffeeOrderData newOrder, Client client)
     {
         if(orderManager != null){
-            if(orderManager.OrderAdded(newOrder))
+            if(orderManager.OrderAdded(newOrder, client))
                 return true;
         }
         return false;
@@ -71,9 +88,7 @@ public class ClientManager : MonoBehaviour
     {
         if(timerAux >= timer)
         {
-            clientsDeactivated.Peek().transform.position = clientsActivated.Peek().transform.position;
-            SetNextActivate();
-            SetLastDeactivate();
+            //nextClient();
             timerAux = 0;
         }
         timerAux += Time.deltaTime;
