@@ -5,7 +5,7 @@ using UnityEngine;
 public class ContainerManager : MonoBehaviour
 {
     private Collider2D containerArea;
-    private List<Collider2D> containedDrops = new();
+    public List<Collider2D> containedDrops = new();
     public float dropsTotal;
     private CoffeeData containedBalls = new();
     public CoffeeData containedPercentages = new();
@@ -67,6 +67,12 @@ public class ContainerManager : MonoBehaviour
 
         // Calculate percentages based on the drops
         containedPercentages.generalQuantities = CalculatePercentages(containedBalls.generalQuantities);
+        float total = 0;
+        foreach (float amount in containedBalls.generalQuantities)
+        {
+            total += amount;
+        }
+        dropsTotal = total;
         containedPercentages.coffeQuantities = CalculatePercentages(containedBalls.coffeQuantities);
         containedPercentages.milkQuantities = CalculatePercentages(containedBalls.milkQuantities);
         containedPercentages.syrupQuantities = CalculatePercentages(containedBalls.syrupQuantities);
@@ -87,7 +93,6 @@ public class ContainerManager : MonoBehaviour
             percentages[i] = dropAmounts[i] / total * 100;
         }
 
-        dropsTotal = total;
         return percentages;
     }
 }

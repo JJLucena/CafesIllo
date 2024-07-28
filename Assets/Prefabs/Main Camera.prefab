@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7526030190930709914}
   - component: {fileID: 3864598934925247647}
   m_Layer: 0
-  m_Name: SoyMilkCamera
-  m_TagString: MainCamera
+  m_Name: CoffeeWhiteCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 8596941387018517678}
   - component: {fileID: 878937135347477545}
   m_Layer: 0
-  m_Name: SoyMilkMaterial
+  m_Name: CoffeeWhiteMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
