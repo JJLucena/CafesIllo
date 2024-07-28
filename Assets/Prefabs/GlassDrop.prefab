@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6346333043590432237
+--- !u!1 &3864091113422465636
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7728155418594269780}
-  - component: {fileID: 1382443825463145904}
-  - component: {fileID: 2765583051310050627}
-  - component: {fileID: 8660210842849349652}
-  - component: {fileID: 9144227741601835947}
+  - component: {fileID: 2171049135887538388}
+  - component: {fileID: 286074597875602501}
+  - component: {fileID: 8297882585646169923}
+  - component: {fileID: 7808846720349742295}
   m_Layer: 0
-  m_Name: Client
+  m_Name: GlassDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7728155418594269780
+--- !u!4 &2171049135887538388
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6346333043590432237}
+  m_GameObject: {fileID: 3864091113422465636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: -6.46, y: -3, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1382443825463145904
+--- !u!212 &286074597875602501
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6346333043590432237}
+  m_GameObject: {fileID: 3864091113422465636}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -55,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.9059122, b: 0.50377357, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7506af747f789c74d932ca93c7d5fcf3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,27 +86,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2765583051310050627
+--- !u!114 &8297882585646169923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6346333043590432237}
+  m_GameObject: {fileID: 3864091113422465636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea78538df84701f4e893d1fb2b3f8c0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cfd5b0f260c53b4a904cb6d1b8b7235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clientManager: {fileID: 0}
-  order: {fileID: 9144227741601835947}
---- !u!61 &8660210842849349652
+  client: {fileID: 0}
+--- !u!61 &7808846720349742295
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6346333043590432237}
+  m_GameObject: {fileID: 3864091113422465636}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -133,34 +131,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.057369947, y: -0.010927677}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.21, y: 1.19}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.218429, y: 1.0764933}
   m_EdgeRadius: 0
---- !u!114 &9144227741601835947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6346333043590432237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccab08228b374b6419af007504ab1363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coffeePercent: 0
-  milkPercent: 0
-  sweetPercent: 0
-  coffeeType: 
-  milkType: 
-  sweetType: 
